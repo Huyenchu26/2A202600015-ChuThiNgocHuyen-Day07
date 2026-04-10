@@ -1,8 +1,8 @@
 # Báo Cáo Lab 7: Embedding & Vector Store
 
-**Họ tên:** [Tên sinh viên]
-**Nhóm:** [Tên nhóm]
-**Ngày:** [Ngày nộp]
+**Họ tên:** Chu Thị Ngọc Huyền  
+**Nhóm:** C401-B1
+**Ngày:** 10/04/2026
 
 ---
 
@@ -11,29 +11,32 @@
 ### Cosine Similarity (Ex 1.1)
 
 **High cosine similarity nghĩa là gì?**
-> *Viết 1-2 câu:*
+> Hai vector embedding có hướng rất giống nhau, nên hai câu có ý nghĩa gần nhau về ngữ nghĩa. Giá trị cosine similarity càng gần 1 thì mức độ tương đồng càng cao.
 
 **Ví dụ HIGH similarity:**
-- Sentence A:
-- Sentence B:
-- Tại sao tương đồng:
+- Sentence A: "Tôi muốn đặt vé máy bay đi Hà Nội."
+- Sentence B: "Tôi cần mua vé bay đến Hà Nội."
+- Tại sao tương đồng: Cả hai câu đều nói về cùng một nhu cầu là mua/đặt vé máy bay đến Hà Nội, chỉ khác cách diễn đạt.
 
 **Ví dụ LOW similarity:**
-- Sentence A:
-- Sentence B:
-- Tại sao khác:
+- Sentence A: "Tôi muốn đặt vé máy bay đi Hà Nội."
+- Sentence B: "Hôm nay tôi học cách nấu mì Ý."
+- Tại sao khác: Hai câu nói về hai chủ đề hoàn toàn khác nhau, một bên là đi lại, một bên là nấu ăn.
 
 **Tại sao cosine similarity được ưu tiên hơn Euclidean distance cho text embeddings?**
-> *Viết 1-2 câu:*
+> Cosine similarity tập trung vào hướng của vector, nên phản ánh tốt mức độ giống nhau về ngữ nghĩa dù độ dài vector có thể khác. Với text embeddings, điều quan trọng thường là ý nghĩa có cùng hướng hay không, chứ không phải khoảng cách tuyệt đối giữa các tọa độ.
 
 ### Chunking Math (Ex 1.2)
 
 **Document 10,000 ký tự, chunk_size=500, overlap=50. Bao nhiêu chunks?**
-> *Trình bày phép tính:*
-> *Đáp án:*
+> Step = chunk_size - overlap = 500 - 50 = 450
+    Số chunks ≈ ceil((10000 - 500) / 450) + 1
+    = ceil(9500 / 450) + 1
+    = ceil(21.11) + 1 = 22 + 1 = 23
+> *Đáp án: 23 chunk*
 
 **Nếu overlap tăng lên 100, chunk count thay đổi thế nào? Tại sao muốn overlap nhiều hơn?**
-> *Viết 1-2 câu:*
+> Overlap tăng → step giảm (500 - 100 = 400) → số chunk tăng lên (~25 chunks). Overlap lớn giúp giữ ngữ cảnh giữa các chunk, giảm việc bị “cắt mất ý” khi dùng cho RAG/embedding.
 
 ---
 
@@ -41,20 +44,16 @@
 
 ### Domain & Lý Do Chọn
 
-**Domain:** [ví dụ: Customer support FAQ, Vietnamese law, cooking recipes, ...]
+**Domain:** [Giáo trình Triết học Mác - Lê Nin]
 
 **Tại sao nhóm chọn domain này?**
-> *Viết 2-3 câu:*
+> Đây là môn học bắt buộc với toàn bộ sinh viên đại học tại Việt Nam, nhưng tài liệu thường dày và trừu tượng, khiến sinh viên khó tra cứu nhanh khi ôn thi. Một RAG chatbot trên domain này cho phép sinh viên đặt câu hỏi tự nhiên như *"Vật chất là gì theo Lenin?"* và nhận câu trả lời trích dẫn đúng chương, đúng nguồn — thay vì phải lật từng trang giáo trình. Ngoài ra, nội dung giáo trình có tính ổn định cao (ít thay đổi theo năm), rất phù hợp để xây dựng và đánh giá một hệ thống RAG mà không lo dữ liệu bị lỗi thời.
 
 ### Data Inventory
 
 | # | Tên tài liệu | Nguồn | Số ký tự | Metadata đã gán |
 |---|--------------|-------|----------|-----------------|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| 1 | Giáo trình Triết học Mác - Lê Nin | | | |
 
 ### Metadata Schema
 
