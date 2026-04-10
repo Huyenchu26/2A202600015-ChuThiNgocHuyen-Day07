@@ -53,14 +53,16 @@
 
 | # | Tên tài liệu | Nguồn | Số ký tự | Metadata đã gán |
 |---|--------------|-------|----------|-----------------|
-| 1 | Giáo trình Triết học Mác - Lê Nin | | | |
+| 1 | Giáo trình Triết học Mác - Lê Nin | Thư viện | ~683,585 | level="Đại học", audience="Khối ngành ngoài lý luận chính trị" |
 
 ### Metadata Schema
 
 | Trường metadata | Kiểu | Ví dụ giá trị | Tại sao hữu ích cho retrieval? |
 |----------------|------|---------------|-------------------------------|
-| | | | |
-| | | | |
+| source | string | "data/Giao trinh Triet hoc.md" | Biết chunk đến từ đâu |
+| level | string | "Đại học" | Filter theo trình độ |
+| level | string | "Đại học" | Filter theo trình độ |
+| chunk_index | int | 42 | Tra cứu chunk gốc |
 
 ---
 
@@ -78,7 +80,7 @@ Chạy `ChunkingStrategyComparator().compare()` trên 2-3 tài liệu:
 
 ### Strategy Của Tôi
 
-**Loại:** [FixedSizeChunker / SentenceChunker / RecursiveChunker / custom strategy]
+**Loại:** [SentenceChunker]
 
 **Mô tả cách hoạt động:**
 > *Viết 3-4 câu: strategy chunk thế nào? Dựa trên dấu hiệu gì?*
@@ -169,11 +171,11 @@ Chạy 5 benchmark queries của nhóm trên implementation cá nhân của bạ
 
 | # | Query | Gold Answer |
 |---|-------|-------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 1 | Triết học là gì? | Triết học là hệ thống tri thức lý luận chung nhất về thế giới và vị trí con người trong thế giới đó. |
+| 2 | Vấn đề cơ bản của triết học gồm những mặt nào? | Gồm mặt bản thể luận (vật chất - ý thức cái nào có trước) và mặt nhận thức luận (con người có khả năng nhận thức thế giới hay không). |
+| 3 | Vai trò của thực tiễn đối với nhận thức là gì? | Thực tiễn là cơ sở, động lực, mục đích và tiêu chuẩn kiểm tra chân lý của nhận thức. |
+| 4 | Phép biện chứng duy vật nhấn mạnh điều gì? | Nhấn mạnh sự vận động, phát triển và mối liên hệ phổ biến của sự vật hiện tượng. |
+| 5 | Sự khác nhau giữa chủ nghĩa duy vật và duy tâm là gì? | Duy vật coi vật chất có trước, quyết định ý thức; duy tâm coi ý thức/tinh thần có trước. |
 
 ### Kết Quả Của Tôi
 
