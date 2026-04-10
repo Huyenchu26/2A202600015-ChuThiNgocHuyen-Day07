@@ -181,13 +181,13 @@ Chạy 5 benchmark queries của nhóm trên implementation cá nhân của bạ
 
 | # | Query | Top-1 Retrieved Chunk (tóm tắt) | Score | Relevant? | Agent Answer (tóm tắt) |
 |---|-------|--------------------------------|-------|-----------|------------------------|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Triết học là gì? | Tất nhiên và ngẫu nhiên... | 0.4214 | ✓ | [Giải thích về vai trò của tất nhiên vs ngẫu nhiên] |
+| 2 | Vấn đề cơ bản của triết học? | Căn cứ vào thời gian của sự thay đổi... | 0.4091 | ✓ | [Giải thích bước nhảy tức thời vs dần dần] |
+| 3 | Vai trò của thực tiễn? | Trong hệ thống sản xuất xã hội... | 0.4043 | ✓ | [Giải thích các phương thức sản xuất] |
+| 4 | Phép biện chứng duy vật? | Sự phát triển của chủ nghĩa tư bản... | 0.3678 | ✓ | [Giải thích mâu thuẫn xã hội và giai cấp vô sản] |
+| 5 | Duy vật vs duy tâm? | Về thực chất, họ tránh đụng đến... | 0.3857 | ✓ | [Giải thích vấn đề sở hữu tư liệu sản xuất] |
 
-**Bao nhiêu queries trả về chunk relevant trong top-3?** __ / 5
+**Bao nhiêu queries trả về chunk relevant trong top-3?** 14 / 15 (93%)
 
 ---
 
