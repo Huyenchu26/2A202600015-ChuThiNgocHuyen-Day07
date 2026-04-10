@@ -108,6 +108,7 @@ Chạy trên tài liệu Giáo trình Triết học Mác - Lê Nin (683,585 ký 
 | Tuyết | RecursiveChunker | 8.0 | Giữ ngữ cảnh tốt, ít cắt ngang đoạn | Cần tinh chỉnh thêm theo chương |
 | Quang Linh | AgenticChunker | 9 | Tự phát hiện ranh giới chủ đề bằng embedding; mỗi chunk mang đủ ngữ cảnh 1 khái niệm triết học | Chunk lớn (avg ~4K chars) có thể chiếm nhiều context window; chạy chậm hơn (~97s trên 684K chars) |
 | Chu Bá Tuấn Anh | RecursiveChunker | 8.5 | Cân bằng được ngữ nghĩa và độ dài | Đôi khi sinh ra các chunk bị rời rạc |
+| Lĩnh | SentenceChunker(3) | 8.5 | Giữ ngữ pháp, retrieval scores cao (0.3-0.5) | Tăng số lượng chunk (1610 vs 300), có thể chậm retrieval |
 
 **Strategy nào tốt nhất cho domain này? Tại sao?**
 > **SentenceChunker** tốt nhất cho domain Triết học vì: (1) Bảo toàn các lập luận triết học tại ranh giới câu, (2) Chunk size nhỏ hơn (422 chars) giúp retriever focus vào ý tưởng cụ thể, (3) Benchmark test cho thấy 93% precision (tương đương FixedSize) nhưng với semantic coherence tốt hơn.
@@ -208,7 +209,7 @@ Chạy 5 benchmark queries của nhóm trên implementation cá nhân của bạ
 Cách tiếp cận này khác với pure SentenceChunker của tôi vì nó cho phép retriever tìm khái niệm chi tiết nhưng LLM vẫn có đủ context để lập luận. Điều này là trade-off tốt giữa precision (child) và recall (parent).
 
 **Điều hay nhất tôi học được từ nhóm khác (qua demo):**
->
+> Ví dụ của nhóm demo không có sự khác biệt nhiều giữa các phương án chunking
 
 **Nếu làm lại, tôi sẽ thay đổi gì trong data strategy?**
 > thêm metadata phong phú (chapter, section, subsection) để filter trước khi search, tối ưu hóa retrieval precision cho domain triết học.
